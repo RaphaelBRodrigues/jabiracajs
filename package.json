@@ -1,6 +1,6 @@
 {
   "name": "tomou-na-jabiraca",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This awesome npm package will let you know when the things went wrong",
   "main": "./lib/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "start:watch": "nodemon --exec ts-node ./src/index.ts",
     "test": "jest",
     "test:watch": "jest --watch",
-    "build": "npm run clear && tsc && sh ./shell/shebang.sh",
+    "build": "npm run clear && tsc && sh ./shell/build.sh",
     "clear": "rm -rf lib || rimraf -f lib"
   },
   "repository": {
@@ -38,8 +38,10 @@
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.2",
-    "jest": "^28.0.3",
+    "execa": "^6.1.0",
+    "jest": "^28.1.0",
     "nodemon": "^2.0.16",
+    "ts-jest": "^28.0.1",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
   },

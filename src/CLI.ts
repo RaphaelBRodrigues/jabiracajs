@@ -18,6 +18,7 @@ class CLI {
       .option('--filepath <filepath>', 'play custom file')
       .option('--volume <volume>', 'sound volume')
       .option('--repeat <times>', 'repeat the sound')
+      .option('--infinite', 'put the sound in infinite loop')
       .parse();
 
     this.checkOptions();
@@ -34,14 +35,19 @@ class CLI {
     filepath?: string;
     volume?: number;
     repeat?: number;
+    infinite?: number;
   }) {
-    const { filepath, volume, repeat } = config;
+    const { filepath, volume, repeat, infinite } = config;
 
     if (filepath) this.sound.filepath = filepath;
     if (volume) this.sound.volume = volume;
     if (repeat) {
       this.sound.shouldRepeat = true;
       this.sound.repeatTimes = repeat;
+    }
+    if (infinite) {
+      this.sound.shouldRepeat = true;
+      this.sound.repeatTimes = Infinity;
     }
   }
 
