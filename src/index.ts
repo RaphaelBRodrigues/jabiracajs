@@ -1,3 +1,6 @@
-import { jabiraca } from './jabiraca'
+import CLI from './CLI';
 
-jabiraca.play()
+(() => {
+  const program = new CLI();
+  program.start();
+})();
