@@ -14,12 +14,22 @@ class Sound {
     this._volume = volume || this._volume;
   }
 
-  set filepath(newfilepath: string) {
-    this._filepath = newfilepath;
+  set filepath(newFilepath: string) {
+    this._filepath = newFilepath;
   }
 
   set volume(volume: number) {
-    this._volume = volume;
+    try {
+      if (volume > 0 && volume < 1) {
+        this._volume = volume;
+      } else {
+        throw new Error(
+          'Invalid value to volume, it should be between 0 and 1',
+        );
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   set repeatTimes(repeatTimes: number) {
