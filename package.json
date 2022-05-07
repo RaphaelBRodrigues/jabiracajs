@@ -7,9 +7,9 @@
     "start": "ts-node ./src",
     "start:watch": "nodemon --exec ts-node ./src/index.ts",
     "test": "jest",
-    "build": "tsc -p ./tsconfig.json --build src"
+    "build": "npm run clear && tsc",
+    "clear": "rm -rf dist || rimraf -f dist"
   },
-  "bin": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RaphaelBRodrigues/jabiracajs.git"
@@ -22,13 +22,14 @@
   },
   "homepage": "https://github.com/RaphaelBRodrigues/jabiracajs#readme",
   "dependencies": {
-    "play": "^0.5.0"
+    "play": "^0.5.0",
+    "sound-play": "^1.1.0"
   },
   "devDependencies": {
     "@types/jest": "^27.5.0",
     "@types/mocha": "^9.1.1",
     "@types/node": "^17.0.31",
-    "@types/play-sound": "^1.1.0",
+    "@types/sound-play": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
     "eslint": "^7.32.0 || ^8.2.0",

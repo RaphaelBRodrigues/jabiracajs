@@ -1,22 +1,32 @@
-import Play from 'play'
+import SoundPlay from 'sound-play'
+import fs from 'fs'
 
 class Sound {
-  filename: string = '';
-  player
+  readonly filename: string = '';
+  readonly volume: number = 0.5
+  private player
 
   constructor(filename: string) {
     this.filename = filename;
-    this.player = Play;
+    this.player = SoundPlay;
+    this.volume = 0.5
+  }
+
+  private validateFile() {
+    const fileExists = fs.existsSync(this.filename + 1)
+
+    if (!fileExists) {
+      throw new Error("File doesn't exists");
+    }
   }
 
   async play() {
     try {
-      console.log(this.player.sound)
-      this.player.sound(this.filename, (err: Error) => {
-        throw err;
-      })
+      this.validateFile();
+      await this.player.play(this.filename, this.volume)
       return true;
     } catch (err) {
+      console.error("Teste", err)
       return false;
     }
   }
@@ -31,8 +41,8 @@ class Sound {
 
   async repeat() {
     try {
-      await this.pause();
       await this.play();
+      await this.repeat();
     } catch (err) {
       console.error(err)
     }
