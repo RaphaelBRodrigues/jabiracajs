@@ -4,27 +4,36 @@
   "description": "",
   "main": "./src/index.ts",
   "scripts": {
-    "start": "ts-node ./src/index.ts",
+    "start": "ts-node ./src",
     "start:watch": "nodemon --exec ts-node ./src/index.ts",
     "test": "jest",
-    "build": "tsc"
+    "build": "tsc -p ./tsconfig.json --build src"
   },
+  "bin": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RaphaelBRodrigues/jabiracajs.git"
   },
   "author": "raphaelbarbosa.rodrigues@gmail.com",
   "license": "ISC",
+  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/RaphaelBRodrigues/jabiracajs/issues"
   },
   "homepage": "https://github.com/RaphaelBRodrigues/jabiracajs#readme",
   "dependencies": {
-    "audic": "^3.0.0"
+    "play": "^0.5.0"
   },
   "devDependencies": {
     "@types/jest": "^27.5.0",
     "@types/mocha": "^9.1.1",
+    "@types/node": "^17.0.31",
+    "@types/play-sound": "^1.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2",
     "jest": "^28.0.3",
     "nodemon": "^2.0.16",
     "ts-node": "^10.7.0",
