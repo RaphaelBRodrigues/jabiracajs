@@ -1,4 +1,4 @@
-import SoundPlay from 'play-sound';
+import SoundPlayer from 'play-sound';
 import fs from 'fs';
 import { JABIRACA_FILE_PATH } from './constants';
 import { ChildProcess } from 'child_process';
@@ -10,7 +10,7 @@ class Sound {
   private _repeatTimes: number = 0;
   private _shouldRepeat: boolean = false;
   private playProcess: ChildProcess;
-  private player = SoundPlay({});
+  private player = SoundPlayer({});
 
   constructor(filepath?: string, volume?: number) {
     this._filepath = filepath || this._filepath;
