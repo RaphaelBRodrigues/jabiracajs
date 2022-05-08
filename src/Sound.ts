@@ -10,9 +10,7 @@ class Sound {
   private _repeatTimes: number = 0;
   private _shouldRepeat: boolean = false;
   private playProcess: ChildProcess;
-  private player = SoundPlay({
-    player: 'powershell',
-  });
+  private player = SoundPlay({});
 
   constructor(filepath?: string, volume?: number) {
     this._filepath = filepath || this._filepath;
