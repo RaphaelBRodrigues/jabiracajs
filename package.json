@@ -1,6 +1,6 @@
 {
   "name": "tomou-na-jabiraca",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "This awesome npm package will let you know when the things went wrong",
   "main": "./lib/index.js",
   "scripts": {
