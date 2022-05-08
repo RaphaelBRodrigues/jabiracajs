@@ -1,6 +1,6 @@
 {
   "name": "tomou-na-jabiraca",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "This awesome npm package will let you know when the things went wrong",
   "main": "./lib/index.js",
   "scripts": {
@@ -8,9 +8,9 @@
     "start:watch": "nodemon --exec ts-node ./src/index.ts",
     "test": "jest",
     "test:watch": "jest --watch",
-    "build": "npm run clear && tsc && sh ./shell/build.sh",
-    "clear": "rm -rf lib || rimraf -f lib",
-    "publish": "npm run build && npm publish access=public"
+    "prebuild": "rm -rf lib || rimraf -f lib",
+    "build": "tsc",
+    "postbuild": "sh ./shell/build.sh"
   },
   "repository": {
     "type": "git",
