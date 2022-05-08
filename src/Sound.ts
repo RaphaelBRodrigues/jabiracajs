@@ -2,14 +2,17 @@ import SoundPlay from 'play-sound';
 import fs from 'fs';
 import { JABIRACA_FILE_PATH } from './constants';
 import { ChildProcess } from 'child_process';
+import { isWindows, playOnPowerShell } from './utils';
 
 class Sound {
   private _filepath: string = JABIRACA_FILE_PATH;
   private _volume: number = 0.5;
   private _repeatTimes: number = 0;
   private _shouldRepeat: boolean = false;
-  private playInstance: ChildProcess;
-  private player = SoundPlay({});
+  private playProcess: ChildProcess;
+  private player = SoundPlay({
+    player: 'powershell',
+  });
 
   constructor(filepath?: string, volume?: number) {
     this._filepath = filepath || this._filepath;
@@ -54,13 +57,22 @@ class Sound {
     }
   }
 
+  startPlayProcess() {
+    if (isWindows()) {
+      this.playProcess = playOnPowerShell(this._filepath);
+    } else {
+      this.playProcess = this.player.play(this._filepath, {}, (err) => {
+        if (err && !err.killed) {
+          throw err;
+        }
+      });
+    }
+  }
+
   play(callback: Function = () => {}) {
     try {
       this.validateFile();
-
-      this.playInstance = this.player.play(this._filepath, {}, (err) => {
-        if (err && !err.killed) throw err;
-      });
+      this.startPlayProcess();
 
       callback();
       return true;
@@ -72,7 +84,7 @@ class Sound {
 
   async pause() {
     try {
-      this.playInstance.kill();
+      this.playProcess.kill();
       throw new Error('Could not pause the sound');
     } catch (err) {
       console.error(err);
