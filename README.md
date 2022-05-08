@@ -1,5 +1,8 @@
-## tomou-na-jabiraca
-This node package will play a sweet __tomou na jabiraca__ when the things go wrong
+[![npm version](https://badge.fury.io/js/tomou-na-jabiraca.svg)](https://www.npmjs.com/package/tomou-na-jabiraca) [![npm](https://img.shields.io/npm/dm/tomou-na-jabiraca.svg)](https://www.npmjs.com/package/tomou-na-jabiraca)
+
+
+# Tomou na Jabiraca 
+| This node package will play a sweet __tomou na  jabiraca__ when the things go wrong
 
 ## Usage
 ```
