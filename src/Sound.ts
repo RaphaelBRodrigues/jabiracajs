@@ -23,7 +23,7 @@ class Sound {
 
   set volume(volume: number) {
     try {
-      if (volume > 0 && volume < 1) {
+      if (volume > 0 && volume <= 1) {
         this._volume = volume;
       } else {
         throw new Error(
@@ -55,11 +55,15 @@ class Sound {
     }
   }
 
-  startPlayProcess() {
+  startPlayProcess(callback: Function) {
     if (isWindows()) {
       this.playProcess = playOnPowerShell(this._filepath);
+      this.playProcess.on('exit', (e) => {
+        callback();
+      });
     } else {
       this.playProcess = this.player.play(this._filepath, {}, (err) => {
+        callback();
         if (err && !err.killed) {
           throw err;
         }
@@ -70,9 +74,8 @@ class Sound {
   play(callback: Function = () => {}) {
     try {
       this.validateFile();
-      this.startPlayProcess();
+      this.startPlayProcess(callback);
 
-      callback();
       return true;
     } catch (err) {
       console.error(err);
