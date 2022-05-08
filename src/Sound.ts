@@ -1,13 +1,15 @@
-import SoundPlay from 'sound-play';
+import SoundPlay from 'play-sound';
 import fs from 'fs';
 import { JABIRACA_FILE_PATH } from './constants';
+import { ChildProcess } from 'child_process';
 
 class Sound {
   private _filepath: string = JABIRACA_FILE_PATH;
   private _volume: number = 0.5;
   private _repeatTimes: number = 0;
   private _shouldRepeat: boolean = false;
-  private player = SoundPlay;
+  private playInstance: ChildProcess;
+  private player = SoundPlay({});
 
   constructor(filepath?: string, volume?: number) {
     this._filepath = filepath || this._filepath;
@@ -52,10 +54,15 @@ class Sound {
     }
   }
 
-  async play() {
+  play(callback: Function = () => {}) {
     try {
       this.validateFile();
-      await this.player.play(this._filepath, this._volume);
+
+      this.playInstance = this.player.play(this._filepath, {}, (err) => {
+        if (err && !err.killed) throw err;
+      });
+
+      callback();
       return true;
     } catch (err) {
       console.error(err);
@@ -65,6 +72,7 @@ class Sound {
 
   async pause() {
     try {
+      this.playInstance.kill();
       throw new Error('Could not pause the sound');
     } catch (err) {
       console.error(err);
@@ -73,7 +81,9 @@ class Sound {
 
   async repeat(currentRepeat: number = 1) {
     try {
-      await this.play();
+      await new Promise((resolve) => {
+        this.play(resolve);
+      });
 
       if (this._repeatTimes > currentRepeat) {
         await this.repeat(currentRepeat + 1);
