@@ -2,15 +2,19 @@
 
 
 # Tomou na Jabiraca 
-| This node package will play a sweet __tomou na  jabiraca__ when the things go wrong
+
+This node package will play a sweet __tomou na jabiraca__ when the things go wrong
 
 ## Usage
-```
+```sh
   npx tomou-na-jabiraca
 ```
 or 
 ```sh
   npm install -g tomou-na-jabiraca
+```
+```sh
+  tomou-na-jabiraca
 ```
 
 ## Examples
