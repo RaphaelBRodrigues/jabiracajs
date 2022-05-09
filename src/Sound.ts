@@ -1,6 +1,6 @@
 import SoundPlayer from 'play-sound';
 import fs from 'fs';
-import { JABIRACA_FILE_PATH } from './constants';
+import { JABIRACA_FILE_PATH, SoundErrors } from './constants';
 import { ChildProcess } from 'child_process';
 import { isWindows, playOnPowerShell } from './utils';
 
@@ -26,9 +26,7 @@ class Sound {
       if (volume > 0 && volume <= 1) {
         this._volume = volume;
       } else {
-        throw new Error(
-          'Invalid value to volume, it should be between 0 and 1',
-        );
+        throw new Error(SoundErrors.INVALID_VOLUME);
       }
     } catch (err) {
       console.error(err);
@@ -51,7 +49,7 @@ class Sound {
     const fileExists = fs.existsSync(this._filepath);
 
     if (!fileExists) {
-      throw new Error("File doesn't exists");
+      throw new Error(SoundErrors.INVALID_FILE);
     }
   }
 
@@ -85,8 +83,11 @@ class Sound {
 
   async pause() {
     try {
+      if (this.playProcess.killed) {
+        throw new Error(SoundErrors.PAUSE_ERROR);
+      }
+
       this.playProcess.kill();
-      throw new Error('Could not pause the sound');
     } catch (err) {
       console.error(err);
     }
