@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RaphaelBRodrigues/jabiracajs.git"
+    "url": "https://github.com/RaphaelBRodrigues/jabiracajs.git"
   },
   "author": "Raphael Barbosa Rodrgues <raphaelbarbosa.rodrigues@gmail.com> (https://raphaelbr.dev)",
   "license": "GPL-3.0-only",
