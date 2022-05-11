@@ -1,10 +1,13 @@
+import { CLIConfig } from '@Types';
 import { Command } from 'commander';
-import { CLI_DESCRIPTION, CLI_NAME, CLI_VERSION } from './constants';
-import Sound from './Sound';
+import Config from 'Config';
+import { CLI_DESCRIPTION, CLI_NAME, CLI_VERSION } from '@Constants';
+import Sound from 'Sound';
 
 class CLI {
   private program = new Command();
   private sound = new Sound();
+  private config: Config;
 
   constructor() {
     this.program
@@ -19,6 +22,7 @@ class CLI {
       .option('--volume <volume>', 'sound volume')
       .option('--repeat <times>', 'repeat the sound')
       .option('--infinite', 'put the sound in infinite loop')
+      .option('--init', 'create a .sweetwarningrc file')
       .parse();
 
     this.checkOptions();
@@ -26,29 +30,40 @@ class CLI {
   }
 
   checkOptions() {
-    const options = this.program.opts();
+    const { init, options } = this.program.opts();
 
-    this.configureSound({ ...options });
+    if (init) {
+      this.createInitialConfig(init);
+    } else {
+      this.configureSound({ ...options });
+    }
   }
 
-  configureSound(config: {
-    filepath?: string;
-    volume?: number;
-    repeat?: number;
-    infinite?: number;
-  }) {
+  createInitialConfig(initParams: string) {
+    this.config = new Config(initParams);
+    this.config.createConfigFile();
+    return true;
+  }
+
+  configureSound(config: CLIConfig) {
     const { filepath, volume, repeat, infinite } = config;
 
-    if (filepath) this.sound.filepath = filepath;
-    if (volume) this.sound.volume = volume;
-    if (repeat) {
-      this.sound.shouldRepeat = true;
-      this.sound.repeatTimes = repeat;
+    try {
+      if (filepath) this.sound.filepath = filepath;
+      if (volume) this.sound.volume = volume;
+      if (repeat) {
+        this.sound.shouldRepeat = true;
+        this.sound.repeatTimes = repeat;
+      }
+      if (infinite) {
+        this.sound.shouldRepeat = true;
+        this.sound.repeatTimes = Infinity;
+      }
+    } catch (err) {
+      console.error(err);
+      return false;
     }
-    if (infinite) {
-      this.sound.shouldRepeat = true;
-      this.sound.repeatTimes = Infinity;
-    }
+    return true;
   }
 
   playSound() {

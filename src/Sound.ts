@@ -1,8 +1,8 @@
 import SoundPlayer from 'play-sound';
 import fs from 'fs';
-import { JABIRACA_FILE_PATH, SoundErrors } from './constants';
+import { JABIRACA_FILE_PATH, SoundErrors } from '@Constants';
 import { ChildProcess } from 'child_process';
-import { isWindows, playOnPowerShell } from './utils';
+import { isWindows, playOnPowerShell } from '@Utils';
 
 class Sound {
   private _filepath: string = JABIRACA_FILE_PATH;

@@ -1,4 +1,4 @@
-import CLI from './CLI';
+import CLI from 'CLI';
 
 (() => {
   const program = new CLI();
