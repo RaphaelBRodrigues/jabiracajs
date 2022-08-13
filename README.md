@@ -1,40 +1,40 @@
-[![npm version](https://badge.fury.io/js/tomou-na-jabiraca.svg)](https://www.npmjs.com/package/tomou-na-jabiraca) [![npm](https://img.shields.io/npm/dm/tomou-na-jabiraca.svg)](https://www.npmjs.com/package/tomou-na-jabiraca)
+[![npm version](https://badge.fury.io/js/sweet-warning.svg)](https://www.npmjs.com/package/sweet-warning) [![npm](https://img.shields.io/npm/dm/sweet-warning.svg)](https://www.npmjs.com/package/sweet-warning)
 
 
-# Tomou na Jabiraca 
+# Sweet warning
 
-This node package will play a sweet __tomou na jabiraca__ when the things go wrong
+This node package will play a sweet __sound__ when the things go wrong
 
 ## Usage
 ```sh
-  npx tomou-na-jabiraca
+  npx sweet-warning
 ```
 or 
 ```sh
-  npm install -g tomou-na-jabiraca
+  npm install -g sweet-warning
 ```
 ```sh
-  tomou-na-jabiraca
+  sweet-warning
 ```
 
 ## Examples
 Play the default sound once
 ```sh
-  npx tomou-na-jabiraca
+  npx sweet-warning
 ```
 
 Play the default sound how many times you want
 ```sh
-  npx tomou-na-jabiraca --repeat <times>
+  npx sweet-warning --repeat <times>
 ```
 e.g
 ```sh
-  npx tomou-na-jabiraca --repeat 5
+  npx sweet-warning --repeat 5
 ```
 
 Play the default sound until ...
 ```sh
-  npx tomou-na-jabiraca --infinite
+  npx sweet-warning --infinite
 ```
 
 Using in a node project
@@ -44,12 +44,12 @@ Using in a node project
 {
   "name": "test",
   "scripts": {
-    "build": "tsc || npx tomou-na-jabiraca"
+    "build": "tsc || npx sweet-warning"
   }
 }
 ```
 
 You can also set a custom sound using a `.wav` file and the `--filepath` flag
   ```sh
-    npx tomou-na-jabiraca --filename ./meu-deus-do-ceu-berg.wav
+    npx sweet-warning --filename ./meu-deus-do-ceu-berg.wav
   ```

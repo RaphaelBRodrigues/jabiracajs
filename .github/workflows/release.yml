@@ -33,6 +33,7 @@ jobs:
           node-version: 16.15.1
           registry-url: https://npm.pkg.github.com/
           scope: '<@RaphaelBRodrigues>'
+      - run: echo "//npm.pkg.github.com/@RaphaelBRodrigues" > ~/.npmrc
       - run: npm publish
         env: 
           NODE_AUTH_TOKEN: ${{github.GPR_TOKEN}}
