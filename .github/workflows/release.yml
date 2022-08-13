@@ -19,12 +19,13 @@ jobs:
       - run:  | 
           npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
           npm config set scope "<@RaphaelBRodrigues>"
-      - run: echo "//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
+      - name: Setting registry on npmrc
+        run: echo "//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
       - name: Installing dependencies
         run: npm install
       - name: Building project
-      - run: npm run build
-        name: Publishing package on NPM
+        run: npm run build
+      - name: Publishing package on NPM
         run: npm publish --userconfig=~/.npmrc --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
