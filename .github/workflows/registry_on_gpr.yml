@@ -19,4 +19,4 @@ jobs:
       - run: echo "//npm.pkg.github.com/@RaphaelBRodrigues" > ~/.npmrc
       - run: npm publish --userconfig=~/.npmrc
         env: 
-          NODE_AUTH_TOKEN: ${{github.GPR_TOKEN}}
+          GPR_TOKEN: ${{github.GPR_TOKEN}}
