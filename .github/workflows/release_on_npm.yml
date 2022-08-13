@@ -23,8 +23,8 @@ jobs:
       - name: Installing dependencies
         run: npm install
       - name: Building project
-      - run: npm run build
-        name: Publishing package on NPM
+        run: npm run build
+      - name: Publishing package on NPM
         run: npm publish --userconfig=~/.npmrc --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
