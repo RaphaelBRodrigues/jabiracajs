@@ -16,9 +16,6 @@ jobs:
         with:
           node-version: '16.15.x'
           registry-url: 'https://registry.npmjs.org'
-      - run:  | 
-          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-          npm config set scope "<@RaphaelBRodrigues>"
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
       - name: Installing dependencies
         run: npm install
