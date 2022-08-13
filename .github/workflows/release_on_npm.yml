@@ -19,7 +19,7 @@ jobs:
       - run:  | 
           npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
           npm config set scope "<@RaphaelBRodrigues>"
-      - run: echo "//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
+      - run: echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
       - name: Installing dependencies
         run: npm install
       - name: Building project
@@ -29,16 +29,3 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
-  publish-on-gpr:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v1
-        with: 
-          node-version: 16.15.1
-          registry-url: https://npm.pkg.github.com/
-          scope: '<@RaphaelBRodrigues>'
-      - run: echo "//npm.pkg.github.com/@RaphaelBRodrigues" > ~/.npmrc
-      - run: npm publish --userconfig=~/.npmrc
-        env: 
-          NODE_AUTH_TOKEN: ${{github.GPR_TOKEN}}
