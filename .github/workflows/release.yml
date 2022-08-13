@@ -1,22 +1,21 @@
-name: sweet-warning
+name: "publish on npm"
 
 on: 
   push:
     branches:
       - main
-      - master
       
 jobs:
-  publish-gpr:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 16.15.1
-          registry-url: https://npm.pkg.github.com/
-          scope: '@RaphaelBRodrigues'
+          registry-url: https://registry.npmjs.org
       - run: npm install
-      - run: npm publish
+      - run: npm run build
+      - run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
