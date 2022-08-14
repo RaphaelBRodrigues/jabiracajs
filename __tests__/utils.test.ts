@@ -29,9 +29,11 @@ describe("Check the operational system", () => {
       value: "win32"
     });
 
+    console.log(process.platform)
     if (isWindows()) {
       const childProcess = playOnPowerShell(JABIRACA_FILE_PATH);
       childProcess.kill();
+      console.log(childProcess);
 
       expect(childProcess.pid).toBeDefined();
       expect(childProcess).toBeInstanceOf(ChildProcess);
