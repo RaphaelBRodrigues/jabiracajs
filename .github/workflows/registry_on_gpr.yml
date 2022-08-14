@@ -19,5 +19,4 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '<@RaphaelBRodrigues>'
       - run: echo "//npm.pkg.github.com/@RaphaelBRodrigues" > ~/.npmrc
-      - run: cat ~/.npmrc 
       - run: npm publish
