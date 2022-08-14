@@ -1,6 +1,6 @@
 {
   "name": "sweet-warning",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "This awesome npm package will let you know when the things went wrong",
   "main": "./lib/index.js",
   "scripts": {
