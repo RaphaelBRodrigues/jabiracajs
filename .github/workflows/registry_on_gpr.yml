@@ -18,6 +18,6 @@ jobs:
           scope: '<@RaphaelBRodrigues>'
       - run: echo "//npm.pkg.github.com/@RaphaelBRodrigues" > ~/.npmrc
       - run: cat ~/.npmrc 
-      - run: npm publish --userconfig=~/.npmrc
+      - run: npm publish
         env: 
-          GPR_TOKEN: ${{github.GPR_TOKEN}}
+          NODE_AUTH_TOKEN: ${{github.GPR_TOKEN}}
