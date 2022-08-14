@@ -1,4 +1,6 @@
-[![npm version](https://badge.fury.io/js/sweet-warning.svg)](https://www.npmjs.com/package/sweet-warning) [![npm](https://img.shields.io/npm/dm/sweet-warning.svg)](https://www.npmjs.com/package/sweet-warning)
+![Licence](https://img.shields.io/badge/license-GNU-blue)
+[![npm version](https://badge.fury.io/js/sweet-warning.svg)](https://www.npmjs.com/package/sweet-warning) 
+[![npm](https://img.shields.io/npm/dm/sweet-warning.svg)](https://www.npmjs.com/package/sweet-warning)
 ![.github/workflows/release_on_npm.yml](https://github.com/raphaelbrodrigues/sweet-warning/actions/workflows/release_on_npm.yml/badge.svg)
 
 

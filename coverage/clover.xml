@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1660513634918" clover="3.2.0">
+  <project timestamp="1660513634918" name="All files">
+    <metrics statements="30" coveredstatements="29" conditionals="23" coveredconditionals="20" methods="9" coveredmethods="7" elements="62" coveredelements="56" complexity="0" loc="30" ncloc="30" packages="2" files="4" classes="4"/>
+    <package name="enums">
+      <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="OS.ts" path="C:\Users\rapha\Desktop\dev\sweet-warning\src\enums\OS.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="25" coveredstatements="24" conditionals="21" coveredconditionals="18" methods="8" coveredmethods="6"/>
+      <file name="index.ts" path="C:\Users\rapha\Desktop\dev\sweet-warning\src\utils\index.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="7" coveredconditionals="6" methods="3" coveredmethods="2"/>
+        <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="3" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+      <file name="isWindows.ts" path="C:\Users\rapha\Desktop\dev\sweet-warning\src\utils\isWindows.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="7" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="3" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+      <file name="playOnPowerShell.ts" path="C:\Users\rapha\Desktop\dev\sweet-warning\src\utils\playOnPowerShell.ts">
+        <metrics statements="11" coveredstatements="10" conditionals="7" coveredconditionals="6" methods="3" coveredmethods="2"/>
+        <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="3" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

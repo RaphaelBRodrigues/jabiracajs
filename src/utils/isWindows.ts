@@ -1,7 +1,9 @@
+import OS from "../enums/OS";
+
 /**
  * 
- * @returns If the OS that the application is being used is Wwindows
+ * @returns Check if the OS that the application is running is Windows
  */
 export default function isWindows() {
-  return process.platform.includes('win');
+  return process.platform.includes(OS.windows);
 }
