@@ -9,12 +9,12 @@ jobs:
   publish-on-npm:
     runs-on: ubuntu-latest
     steps:
-        env:
-          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
       - name: Checkout
         uses: actions/checkout@master
       - name: Setting node
         uses: actions/setup-node@v1
+        env:
+          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
         with:
           node-version: '16.15.x'
           registry-url: 'https://registry.npmjs.org'

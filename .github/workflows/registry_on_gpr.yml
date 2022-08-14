@@ -1,23 +1,32 @@
-name: "publish on gpr"
+name: "publish on npm"
 
-on:
-  workflow_run:
-    workflows: ['publish on npm']
-    types:  
-      - completed
-
+on: 
+  push:
+    branches:
+      - main
+      
 jobs:
-  publish-on-gpr:
+  publish-on-npm:
     runs-on: ubuntu-latest
     steps:
-        env: 
-          NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v1
-        with: 
-          node-version: "16.15.x"
-          registry-url: https://npm.pkg.github.com/
-          scope: '<@RaphaelBRodrigues>'
-      - run: echo "//npm.pkg.github.com/@RaphaelBRodrigues" > ~/.npmrc
-      - run: cat ~/.npmrc 
-      - run: npm publish
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Setting node
+        uses: actions/setup-node@v1
+        env:
+          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+        with:
+          node-version: '16.15.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run: echo $NPM_AUTH_TOKEN
+      - run: echo ${{ secrets.NPM_AUTH_TOKEN }}
+      - run : echo "$env:NPM_AUTH_TOKEN"
+      - name: Installing dependencies
+        run: npm install
+      - name: Building project
+        run: npm run build
+      - run: cat ~/.npmrc
+      - name: Publishing package on NPM
+        run: npm publish --userconfig=~/.npmrc --access public
+        
