@@ -19,7 +19,7 @@ jobs:
       - name: Setting npm registry
         run: echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
       - name: Installing dependencies
-        run: npm ci
+        run: npm install
       - name: Building project
         run: npm run build
       - name: Publishing package on NPM
