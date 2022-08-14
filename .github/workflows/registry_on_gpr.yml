@@ -13,10 +13,11 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v1
         with: 
-          node-version: 16.15.1
+          node-version: "16.15.x"
           registry-url: https://npm.pkg.github.com/
           scope: '<@RaphaelBRodrigues>'
       - run: echo "//npm.pkg.github.com/@RaphaelBRodrigues" > ~/.npmrc
+      - run: cat ~/.npmrc 
       - run: npm publish --userconfig=~/.npmrc
         env: 
           GPR_TOKEN: ${{github.GPR_TOKEN}}
