@@ -14,16 +14,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/RaphaelBRodrigues/jabiracajs.git"
+    "url": "https://github.com/RaphaelBRodrigues/sweet-warning.git"
   },
   "author": "Raphael Barbosa Rodrgues <raphaelbarbosa.rodrigues@gmail.com> (https://raphaelbr.dev)",
   "license": "GPL-3.0-only",
   "type": "commonjs",
   "private": false,
   "bugs": {
-    "url": "https://github.com/RaphaelBRodrigues/jabiracajs/issues"
+    "url": "https://github.com/RaphaelBRodrigues/sweet-warning/issues"
   },
-  "homepage": "https://github.com/RaphaelBRodrigues/jabiracajs#readme",
+  "homepage": "https://github.com/RaphaelBRodrigues/sweet-warning#readme",
   "dependencies": {
     "commander": "^9.2.0",
     "play-sound": "^1.1.5"
