@@ -17,13 +17,15 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '<@RaphaelBRodrigues>'
       - name: Setting gpr registry
-        run: echo "//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
-      - run: echo ~/.npmrc
+        run: echo "registry="https://npm.pkg.github.com/"
+//npm.pkg.github.com/:_authToken=NODE_AUTH_TOKEN
+save-exact=true" > ~/.npmrc
+      - run: cat ~/.npmrc
       - name: Installing dependencies
         run: npm install
       - name: Building project
         run: npm run build
       - name: Publishing package on gpr
-        run: npm publish
+        run: npm publish --userconfig=~/.npmrc --registry=https//npm.pkg.github.com/
         env: 
           NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
