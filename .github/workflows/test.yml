@@ -10,6 +10,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "16.15.x"
+      - name: Installing dependencies
+        run: npm install
       - name: Running tests
         run: npm test
 
