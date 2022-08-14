@@ -1,5 +1,4 @@
 import { ChildProcess } from 'child_process';
-import OS from '../src/enums/OS';
 import isWindows from '../src/utils/isWindows'
 import { playOnPowerShell } from '../src/utils'
 import { JABIRACA_FILE_PATH } from '../src/constants'
@@ -22,8 +21,6 @@ describe("Check the operational system", () => {
 
     const result = isWindows();
 
-    console.log("result",isWindows, result)
-
     expect(result).toBeTruthy()
   });
 
@@ -33,9 +30,11 @@ describe("Check the operational system", () => {
     });
 
     if (isWindows()) {
-      const process = playOnPowerShell(JABIRACA_FILE_PATH);
-      
-      expect(process).toBeInstanceOf(ChildProcess)
+      const childProcess = playOnPowerShell(JABIRACA_FILE_PATH);
+      childProcess.kill();
+
+      expect(childProcess.pid).toBeDefined();
+      expect(childProcess).toBeInstanceOf(ChildProcess);
     } 
   });
 })
