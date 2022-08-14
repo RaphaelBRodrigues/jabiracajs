@@ -17,9 +17,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '<@RaphaelBRodrigues>'
       - name: Setting gpr registry
-        run: echo "registry="https://npm.pkg.github.com/"
-//npm.pkg.github.com/:_authToken=NODE_AUTH_TOKEN
-save-exact=true" > ~/.npmrc
+        run: echo "registry=//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
       - run: cat ~/.npmrc
       - name: Installing dependencies
         run: npm install
