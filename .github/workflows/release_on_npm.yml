@@ -13,6 +13,8 @@ jobs:
         uses: actions/checkout@master
       - name: Setting node
         uses: actions/setup-node@v1
+      - name: Badge Action
+        uses: emibcn/badge-action@v1.2.4
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/

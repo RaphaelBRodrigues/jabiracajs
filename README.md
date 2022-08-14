@@ -1,4 +1,5 @@
 [![npm version](https://badge.fury.io/js/sweet-warning.svg)](https://www.npmjs.com/package/sweet-warning) [![npm](https://img.shields.io/npm/dm/sweet-warning.svg)](https://www.npmjs.com/package/sweet-warning)
+![.github/workflows/release_on_npm.yml](https://github.com/raphaelbrodrigues/badge-action/workflows/.github/workflows/release_on_npm.yml/badge.svg)
 
 
 # Sweet warning
