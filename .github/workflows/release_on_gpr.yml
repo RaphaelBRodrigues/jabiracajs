@@ -12,17 +12,18 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v1
-        env: 
-          NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
         with: 
-          node-version: "16.15.x"
+          node-version: 16
           registry-url: https://npm.pkg.github.com/
           scope: '<@RaphaelBRodrigues>'
       - name: Setting gpr registry
         run: echo "//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
+      - run: echo ~/.npmrc
       - name: Installing dependencies
         run: npm install
       - name: Building project
         run: npm run build
       - name: Publishing package on gpr
-        run: npm publish --registry https://npm.pkg.github.com/
+        run: npm publish
+        env: 
+          NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}
