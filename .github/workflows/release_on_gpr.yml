@@ -18,6 +18,11 @@ jobs:
           node-version: "16.15.x"
           registry-url: https://npm.pkg.github.com/
           scope: '<@RaphaelBRodrigues>'
-      - run: env
-      - run: echo "//npm.pkg.github.com/@RaphaelBRodrigues" > ~/.npmrc
-      - run: npm publish
+      - name: Setting gpr registry
+        run: echo "//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
+      - name: Installing dependencies
+        run: npm install
+      - name: Building project
+        run: npm run build
+      - name: Publishing package on gpr
+        run: npm publish
