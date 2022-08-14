@@ -3,8 +3,19 @@ name: unit tests
 on: push
 
 jobs:
-  test:
+  test-linux:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16.15.x"
+      - name: Installing dependencies
+        run: npm install
+      - name: Running tests
+        run: npm test
+  test-windows:
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
