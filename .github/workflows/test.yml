@@ -4,8 +4,8 @@ on: push
 
 jobs:
   test:
+    runs-on: ubuntu-latest
     steps:
-      runs-on: ubuntu-latest
     - name: Running tests
       run: npm run test
 
