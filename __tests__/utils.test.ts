@@ -1,9 +1,17 @@
 import { ChildProcess } from 'child_process';
-import isWindows from '../src/utils/isWindows'
-import { playOnPowerShell } from '../src/utils'
+import { playOnPowerShell, isWindows } from '../src/utils'
 import { JABIRACA_FILE_PATH } from '../src/constants'
 
+
+const plataform = process.platform;
+
 describe("Check the operational system", () => { 
+  beforeEach(() => {
+    Object.defineProperty(process, "platform", {
+      value: plataform
+    });
+  })
+
   it("should return false when is not a windows system", () => {
     Object.defineProperty(process, "platform", {
       value: "linux"
@@ -28,10 +36,9 @@ describe("Check the operational system", () => {
     if (isWindows()) {
       const childProcess = playOnPowerShell(JABIRACA_FILE_PATH);
       childProcess.kill();
-      console.log(childProcess);
 
       expect(childProcess.pid).toBeDefined();
       expect(childProcess).toBeInstanceOf(ChildProcess);
     } 
-  });
+  }); 
 })
