@@ -16,9 +16,11 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
         with:
-          node-version: '16.15.x'
-          registry-url: 'https://registry.npmjs.org'
-      - run: echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+      - name: Setting npm registry
+        run:  npm config set registry http://registry.npmjs.org
+&& echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
       - name: Installing dependencies
         run: npm install
       - name: Building project
