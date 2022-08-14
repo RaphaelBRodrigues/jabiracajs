@@ -25,4 +25,4 @@ jobs:
       - name: Building project
         run: npm run build
       - name: Publishing package on gpr
-        run: npm publish
+        run: npm publish --registry https://npm.pkg.github.com/
