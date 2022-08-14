@@ -25,11 +25,6 @@ describe("Check the operational system", () => {
   });
 
   it('should return a child_process of powershell when is a windows system', () => {
-    Object.defineProperty(process, "platform", { 
-      value: "win32"
-    });
-
-    console.log(process.platform)
     if (isWindows()) {
       const childProcess = playOnPowerShell(JABIRACA_FILE_PATH);
       childProcess.kill();
