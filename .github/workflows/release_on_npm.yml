@@ -9,6 +9,8 @@ jobs:
   publish-on-npm:
     runs-on: ubuntu-latest
     steps:
+        env:
+          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
       - name: Checkout
         uses: actions/checkout@master
       - name: Setting node
@@ -17,15 +19,14 @@ jobs:
           node-version: '16.15.x'
           registry-url: 'https://registry.npmjs.org'
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
+      - run: echo $NPM_AUTH_TOKEN
+      - run: echo ${{ secrets.NPM_AUTH_TOKEN }}
+      - run : echo "$env:NPM_AUTH_TOKEN"
       - name: Installing dependencies
         run: npm install
       - name: Building project
         run: npm run build
       - run: cat ~/.npmrc
-      - run: echo $NPM_AUTH_TOKEN
-      - run : echo "$env:NPM_AUTH_TOKEN"
       - name: Publishing package on NPM
         run: npm publish --userconfig=~/.npmrc --access public
-        env:
-          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
