@@ -4,8 +4,8 @@ import { ICLI } from './@types/CLI';
 import Sound from './Sound';
 
 class CLI implements ICLI {
-  program = new Command();
-  sound = new Sound();
+  readonly program = new Command();
+  readonly sound = new Sound();
 
   constructor() {
     this.program
