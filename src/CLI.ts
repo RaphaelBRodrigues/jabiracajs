@@ -1,10 +1,11 @@
 import { Command } from 'commander';
 import { CLI_DESCRIPTION, CLI_NAME, CLI_VERSION } from './constants';
+import { ICLI } from './@types/CLI';
 import Sound from './Sound';
 
-class CLI {
-  private program = new Command();
-  private sound = new Sound();
+class CLI implements ICLI {
+  program = new Command();
+  sound = new Sound();
 
   constructor() {
     this.program
@@ -28,27 +29,7 @@ class CLI {
   checkOptions() {
     const options = this.program.opts();
 
-    this.configureSound({ ...options });
-  }
-
-  configureSound(config: {
-    filepath?: string;
-    volume?: number;
-    repeat?: number;
-    infinite?: number;
-  }) {
-    const { filepath, volume, repeat, infinite } = config;
-
-    if (filepath) this.sound.filepath = filepath;
-    if (volume) this.sound.volume = volume;
-    if (repeat) {
-      this.sound.shouldRepeat = true;
-      this.sound.repeatTimes = repeat;
-    }
-    if (infinite) {
-      this.sound.shouldRepeat = true;
-      this.sound.repeatTimes = Infinity;
-    }
+    this.sound.configure({ ...options });
   }
 
   playSound() {
